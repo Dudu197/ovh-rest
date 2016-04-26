@@ -41,7 +41,6 @@ module OVH
 
     [:get, :post, :put, :delete].each do |method|
       define_method method do |endpoint, payload = nil|
-        raise RESTError, "Invalid endpoint #{endpoint}, should match '/<service>/.*'" unless %r{^/\w+/.*$}.match(endpoint)
 
         url = @api_url + endpoint
         uri = URI.parse(url)
